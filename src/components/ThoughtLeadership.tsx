@@ -29,9 +29,9 @@ export const ThoughtLeadership: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               id="thought-leadership-linkedin-cta"
-              className="inline-flex items-center space-x-2 text-[13.5px] font-bold text-[#1677D2] hover:text-[#0B2239] border border-slate-300 hover:border-slate-400 px-5 py-3 rounded transition-all duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center space-x-2 text-[13.5px] font-bold text-[#1677D2] hover:text-[#071A2D] border border-slate-300 hover:border-slate-400 px-5 py-3 rounded transition-all duration-200 hover:-translate-y-0.5"
             >
-              <span>Follow on LinkedIn</span>
+              <span>FOLLOW ON LINKEDIN</span>
               <ExternalLink className="w-4 h-4 text-[#1677D2]" />
             </a>
           </div>

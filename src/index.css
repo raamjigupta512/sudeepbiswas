@@ -80,6 +80,19 @@
   }
 }
 
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.anim-shimmer {
+  animation: shimmerSweep 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 .anim-flow-dash {
   animation: flowDash 3s linear infinite;
 }
@@ -104,9 +117,31 @@
   animation: nodeGlowPulse 4s ease-in-out infinite;
 }
 
-/* Executive Portrait Seamless Mask */
+/* Cinematic Executive Portrait Mask - Seamless Lower Body & Edge Blend into Navy Canvas */
+.portrait-cinematic-blend {
+  mask-image: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #000000 60%,
+    rgba(0, 0, 0, 0.9) 72%,
+    rgba(0, 0, 0, 0.55) 82%,
+    rgba(0, 0, 0, 0.2) 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #000000 60%,
+    rgba(0, 0, 0, 0.9) 72%,
+    rgba(0, 0, 0, 0.55) 82%,
+    rgba(0, 0, 0, 0.2) 92%,
+    transparent 100%
+  );
+}
+
+/* Executive Portrait Seamless Mask - Preserves 100% solid opacity for subject while softening outer perimeter */
 .portrait-executive-mask {
-  mask-image: radial-gradient(ellipse 86% 90% at 50% 45%, #000000 52%, rgba(0, 0, 0, 0.6) 78%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 86% 90% at 50% 45%, #000000 52%, rgba(0, 0, 0, 0.6) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 92% 94% at 50% 42%, #000000 74%, rgba(0, 0, 0, 0.85) 88%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 92% 94% at 50% 42%, #000000 74%, rgba(0, 0, 0, 0.85) 88%, transparent 100%);
 }
 

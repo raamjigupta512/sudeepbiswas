@@ -20,14 +20,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenProfile, onOpenContact }) 
   }, []);
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
     { label: 'Impact', href: '#impact' },
     { label: 'Case Studies', href: '#case-studies' },
     { label: 'Thought Leadership', href: '#thought-leadership' },
     { label: 'Education', href: '#education' },
-    { label: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -53,8 +51,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenProfile, onOpenContact }) 
           </span>
         </a>
 
-        {/* Center Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-7" aria-label="Main Navigation">
+        {/* Center Desktop Navigation (Single line, no wrapping) */}
+        <nav className="hidden lg:flex items-center space-x-6 xl:space-x-7 whitespace-nowrap" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -67,16 +65,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenProfile, onOpenContact }) 
           ))}
         </nav>
 
-        {/* Right Action */}
-        <div className="hidden sm:flex items-center space-x-3">
+        {/* Right: Profile & Get In Touch CTA */}
+        <div className="hidden sm:flex items-center space-x-3 shrink-0">
           <button
             onClick={onOpenProfile}
             id="nav-profile-button"
-            className="hidden xl:inline-flex items-center space-x-1.5 text-[13px] font-medium text-slate-600 hover:text-[#071A2D] px-3.5 py-2 rounded transition-colors"
+            className="inline-flex items-center space-x-1.5 text-[13.5px] font-semibold text-slate-700 hover:text-[#071A2D] px-3.5 py-2 rounded transition-colors cursor-pointer"
             title="View Executive Dossier"
           >
-            <FileText className="w-3.5 h-3.5 text-slate-400" />
-            <span>Profile Dossier</span>
+            <FileText className="w-4 h-4 text-slate-400" />
+            <span>Profile</span>
           </button>
           <a
             href="#contact"
@@ -87,7 +85,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenProfile, onOpenContact }) 
               el?.scrollIntoView({ behavior: 'smooth' });
             }}
             id="nav-cta-button"
-            className="inline-flex items-center space-x-2 bg-[#071A2D] hover:bg-[#0B2239] text-white text-[13.5px] font-semibold px-5 py-2.5 rounded transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow active:translate-y-0"
+            className="inline-flex items-center space-x-2 bg-[#071A2D] hover:bg-[#0B2239] text-white text-[13px] font-semibold px-4.5 py-2.5 rounded transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow active:translate-y-0 whitespace-nowrap"
           >
             <span>Get In Touch</span>
             <ArrowRight className="w-4 h-4 text-[#42B8FF]" />

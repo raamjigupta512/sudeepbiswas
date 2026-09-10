@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Globe2, Layers, Users2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Layers, Globe, Compass, CheckCircle } from 'lucide-react';
 import { EXECUTIVE_INFO } from '../data/executiveData';
 
 interface AboutSectionProps {
@@ -7,118 +7,116 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenProfile }) => {
+  const attributes = [
+    {
+      title: 'STRATEGIC',
+      lead: 'Think beyond technology.',
+      description:
+        'Framing technology choices not as technical upgrades, but as board-level value drivers: working capital efficiency, supply chain agility, and customer retention.',
+    },
+    {
+      title: 'OPERATIONAL',
+      lead: 'Turn strategy into execution.',
+      description:
+        'Bridging architectural blueprints with ground-level engineering rigor, DevSecOps velocity, multi-vendor stage-gate governance, and predictable SLA adherence.',
+    },
+    {
+      title: 'HUMAN',
+      lead: 'Build teams that sustain transformation.',
+      description:
+        'Cultivating psychological safety, transparent career pathways, and technical mentorship that sustained an 89% employee satisfaction score across global delivery organizations.',
+    },
+  ];
+
   return (
     <section
       id="about"
-      className="bg-white text-[#132238] py-20 lg:py-24 border-b border-slate-200"
+      className="bg-white text-[#132238] py-20 lg:py-28 border-b border-slate-200/90"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Editorial Headline & 29+ Years Visual */}
+          {/* ================= LEFT COLUMN: Large Editorial Statement ================= */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full">
             <div>
               <div className="inline-flex items-center space-x-2 text-[11px] font-bold tracking-[0.25em] text-[#1677D2] uppercase mb-4">
                 <span>ABOUT SUDEEP</span>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#071A2D] leading-[1.18] tracking-tight mb-6">
-                Nearly three decades of transforming technology into measurable business value.
-              </h2>
+              {/* Editorial Statement */}
+              <div className="space-y-2 mb-8">
+                <p className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#071A2D] leading-[1.12] tracking-tight">
+                  Nearly three decades.
+                </p>
+                <p className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#071A2D] leading-[1.12] tracking-tight">
+                  Multiple industries.
+                </p>
+                <p className="font-serif text-2xl sm:text-3xl lg:text-[36px] font-medium text-slate-500 leading-[1.18] tracking-tight pt-2">
+                  One consistent mission:
+                </p>
+                <p className="font-serif text-2xl sm:text-3xl lg:text-[36px] font-bold text-[#1677D2] leading-[1.18] tracking-tight">
+                  Turn technology transformation into measurable business value.
+                </p>
+              </div>
 
-              <p className="text-[15px] text-slate-600 leading-relaxed font-light mb-8">
-                Operating at the critical intersection of business strategy, global delivery, and modern enterprise software architecture.
+              <p className="text-[15.5px] text-slate-600 leading-relaxed font-light">
+                An executive leadership philosophy shaped by nearly thirty years of guiding premier global organizations through technological shifts — from foundational industrial engineering to enterprise ERP, cloud modernizations, and AI-accelerated delivery ecosystems.
               </p>
             </div>
 
-            {/* Subtle "29+ YEARS" Visual Element */}
-            <div className="relative p-7 bg-[#F5F8FC] border border-slate-200/90 rounded-sm mt-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="font-serif text-5xl lg:text-6xl font-extrabold text-[#071A2D] tracking-tight">
-                    29+
-                  </span>
-                  <span className="text-xs font-bold text-[#1677D2] uppercase tracking-[0.2em] block mt-1">
-                    YEARS OF EXECUTIVE IMPACT
-                  </span>
-                </div>
-                <div className="text-right">
-                  <span className="text-xs text-slate-500 font-medium block">
-                    Siemens • SPJIMR • Asian Paints
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium block">
-                    Capgemini • HCL • Infosys
-                  </span>
-                  <span className="text-xs text-slate-500 font-semibold text-[#071A2D] block">
-                    Mindtree • Maersk • ITC Infotech
-                  </span>
-                </div>
-              </div>
+            {/* Subtle Pedigree Strip */}
+            <div className="mt-10 pt-6 border-t border-slate-200">
+              <span className="text-[10.5px] font-mono uppercase tracking-[0.2em] text-slate-400 block mb-2">
+                Executive Pedigree
+              </span>
+              <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                Siemens • Asian Paints • Capgemini • HCL Technologies • Infosys • Mindtree • A.P. Moller – Maersk • ITC Infotech
+              </p>
             </div>
           </div>
 
-          {/* Right Column: Executive Biography & Competency Grid */}
+          {/* ================= RIGHT COLUMN: Concise Biography & Three Attributes ================= */}
           <div className="lg:col-span-7 flex flex-col justify-between">
-            <div className="space-y-5 text-[15.5px] text-slate-700 leading-relaxed font-light">
+            
+            {/* Concise Executive Biography */}
+            <div className="space-y-4 text-[15.5px] sm:text-[16px] text-slate-700 leading-relaxed font-light mb-10">
               <p>
-                Sudeep Biswas is a seasoned technology executive and digital transformation leader who currently serves as <strong className="font-semibold text-[#071A2D]">Vice President at ITC Infotech</strong>. Throughout a career spanning nearly thirty years, he has partnered with Fortune 500 boards, CXO leaders, and multi-disciplinary teams to conceptualize and execute mission-critical enterprise transformations.
+                Sudeep Biswas is a seasoned technology and transformation leader who currently serves as <strong className="font-semibold text-[#071A2D]">Vice President at ITC Infotech</strong>. Partnering with Fortune 500 enterprises, CXO suites, and global delivery centers, he stewards complex, mission-critical digital modernizations that demand strategic foresight and operational precision.
               </p>
-
               <p>
-                His core mastery spans the complete lifecycle of <strong className="font-semibold text-[#071A2D]">SAP and S/4HANA enterprise ecosystems</strong>, global IT product management, and complex multi-vendor program governance. Sudeep has stewarded multi-million dollar portfolio P&Ls, built and coached global consulting organizations exceeding 1,300 professionals, and pioneered robust rollout methodologies that ensure delivery predictability in highly regulated, cross-border environments.
-              </p>
-
-              <p>
-                Prior to ITC Infotech, Sudeep was General Manager for the Order-to-Cash Platform at <strong className="font-semibold text-[#071A2D]">A.P. Moller – Maersk</strong>, co-leading the engineering backbone of their global New Finance & Tax Platform. Earlier, as Associate Vice President at <strong className="font-semibold text-[#071A2D]">Mindtree</strong>, he drove the hyper-growth of their global SAP practice while sustaining an industry-leading 89% employee engagement rating.
+                His core executive mastery spans large-scale <strong className="font-semibold text-[#071A2D]">SAP and S/4HANA ecosystems</strong>, global enterprise delivery governance, and multi-vendor P&L management. Sudeep has directed delivery practices exceeding 1,300 consultants, co-owned multi-billion-dollar logistics platform engineering at A.P. Moller – Maersk, and pioneered large-program rollout frameworks that sustained &gt;97% SLA compliance across his career.
               </p>
             </div>
 
-            {/* Strategic Pillars Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-6 border-t border-slate-200">
-              <div className="flex items-start space-x-3 p-3 rounded bg-[#F8FAFC]">
-                <Layers className="w-5 h-5 text-[#1677D2] shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-[13.5px] font-bold text-[#071A2D]">Clean-Core SAP & S/4HANA</h4>
-                  <p className="text-[12px] text-slate-500 mt-0.5">Greenfield architecture, data harmonization & Order-to-Cash mastery.</p>
-                </div>
-              </div>
+            {/* The Three Leadership Attributes: STRATEGIC / OPERATIONAL / HUMAN */}
+            <div className="space-y-4 pt-6 border-t border-slate-200">
+              <span className="text-[11px] font-mono font-bold tracking-[0.22em] text-[#1677D2] uppercase block mb-2">
+                CORE LEADERSHIP ATTRIBUTES
+              </span>
 
-              <div className="flex items-start space-x-3 p-3 rounded bg-[#F8FAFC]">
-                <Users2 className="w-5 h-5 text-[#1677D2] shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-[13.5px] font-bold text-[#071A2D]">People & Talent Scale</h4>
-                  <p className="text-[12px] text-slate-500 mt-0.5">Built 650+ and scaled 1300+ consultants with 89% employee engagement.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3 p-3 rounded bg-[#F8FAFC]">
-                <Globe2 className="w-5 h-5 text-[#1677D2] shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-[13.5px] font-bold text-[#071A2D]">Global Delivery & P&L</h4>
-                  <p className="text-[12px] text-slate-500 mt-0.5">Seamless cross-border orchestration across India, Canada, Europe & US.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3 p-3 rounded bg-[#F8FAFC]">
-                <ShieldCheck className="w-5 h-5 text-[#1677D2] shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-[13.5px] font-bold text-[#071A2D]">Predictable Governance</h4>
-                  <p className="text-[12px] text-slate-500 mt-0.5">&gt;97% SLA achievement with &lt;2% change failure rate.</p>
-                </div>
+              <div className="grid grid-cols-1 gap-4">
+                {attributes.map((attr) => (
+                  <div
+                    key={attr.title}
+                    className="p-5 rounded bg-[#F8FAFC] border border-slate-200/80 hover:border-slate-300 transition-colors"
+                  >
+                    <div className="flex items-center space-x-2.5 mb-1.5">
+                      <span className="text-xs font-mono font-bold tracking-[0.2em] text-[#1677D2] uppercase">
+                        {attr.title}
+                      </span>
+                      <span className="text-slate-300">—</span>
+                      <h4 className="font-serif text-base sm:text-lg font-bold text-[#071A2D] tracking-tight">
+                        {attr.lead}
+                      </h4>
+                    </div>
+                    <p className="text-[13.5px] text-slate-600 leading-relaxed font-light pl-0 sm:pl-1">
+                      {attr.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Read Profile CTA */}
-            <div className="mt-8 flex items-center space-x-4">
-              <button
-                onClick={onOpenProfile}
-                id="about-read-dossier-btn"
-                className="inline-flex items-center space-x-2 text-[13.5px] font-bold text-[#1677D2] hover:text-[#0B2239] transition-colors group"
-              >
-                <span>Read Full Executive Biography in Official Profile</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            </div>
           </div>
 
         </div>

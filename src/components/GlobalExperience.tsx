@@ -17,9 +17,7 @@ export const GlobalExperience: React.FC = () => {
             <span>GEOGRAPHIC FOOTPRINT</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            GLOBAL EXPERIENCE.
-            <br />
-            LOCAL IMPACT.
+            GLOBAL EXPERIENCE
           </h2>
           <p className="text-[15.5px] text-slate-300 font-light mt-4">
             Cross-continental delivery leadership anchoring strategic engagements in India, Canada, the United States, and Europe.

@@ -81,7 +81,7 @@ export default function App() {
       </main>
 
       {/* 17. Minimalist Executive Footer */}
-      <Footer />
+      <Footer onOpenProfile={() => setProfileModalOpen(true)} />
 
       {/* 22. Downloadable Executive Profile & Briefing Dossier */}
       <ExecutiveProfileModal
