@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-navy: #071A2D;
+  --color-deep-navy: #0B2239;
+  --color-brand-blue: #1677D2;
+  --color-bright-blue: #42B8FF;
+  --color-off-white: #F5F8FC;
+  --color-text-dark: #132238;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #071A2D;
+}
+::-webkit-scrollbar-thumb {
+  background: #1B3654;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1677D2;
+}
+
+/* Subtle dynamic animations */
+@keyframes flowDash {
+  0% {
+    stroke-dashoffset: 60;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flowDashReverse {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 60;
+  }
+}
+
+@keyframes beamPulse {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes streamVertical {
+  0% {
+    stroke-dashoffset: 120;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
+@keyframes nodeGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(66, 184, 255, 0.2), inset 0 0 10px rgba(66, 184, 255, 0.1);
+    border-color: rgba(22, 119, 210, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(66, 184, 255, 0.45), inset 0 0 15px rgba(66, 184, 255, 0.2);
+    border-color: rgba(66, 184, 255, 0.85);
+  }
+}
+
+.anim-flow-dash {
+  animation: flowDash 3s linear infinite;
+}
+
+.anim-flow-dash-slow {
+  animation: flowDash 6s linear infinite;
+}
+
+.anim-flow-dash-reverse {
+  animation: flowDashReverse 4s linear infinite;
+}
+
+.anim-beam-pulse {
+  animation: beamPulse 3.5s ease-in-out infinite;
+}
+
+.anim-stream-v {
+  animation: streamVertical 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.anim-node-glow {
+  animation: nodeGlowPulse 4s ease-in-out infinite;
+}
+
+/* Executive Portrait Seamless Mask */
+.portrait-executive-mask {
+  mask-image: radial-gradient(ellipse 86% 90% at 50% 45%, #000000 52%, rgba(0, 0, 0, 0.6) 78%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 86% 90% at 50% 45%, #000000 52%, rgba(0, 0, 0, 0.6) 78%, transparent 100%);
+}
+
