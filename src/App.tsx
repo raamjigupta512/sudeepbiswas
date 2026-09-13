@@ -20,6 +20,7 @@ import { EducationSection } from './components/EducationSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ExecutiveProfileModal } from './components/ExecutiveProfileModal';
+import { KeyboardNavigation } from './components/KeyboardNavigation';
 
 export default function App() {
   const [profileModalOpen, setProfileModalOpen] = useState(false);
@@ -88,6 +89,9 @@ export default function App() {
         isOpen={profileModalOpen}
         onClose={() => setProfileModalOpen(false)}
       />
+
+      {/* Keyboard Navigation Controller & Accessibility Toast */}
+      <KeyboardNavigation isModalOpen={profileModalOpen} />
     </div>
   );
 }

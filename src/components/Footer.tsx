@@ -75,12 +75,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenProfile }) => {
 
         </div>
 
-        {/* Minimal Copyright */}
+        {/* Minimal Copyright & Credits */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-          <p>© 2026 Sudeep Biswas. All rights reserved.</p>
-          <p className="font-mono text-[11px] tracking-wider text-slate-500">
-            STRATEGY • TRANSFORMATION • PEOPLE • IMPACT
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <p className="text-slate-400">© 2026 Sudeep Biswas. All rights reserved.</p>
+            <p className="text-gray-500 text-xs">
+              Built by{' '}
+              <a
+                href="https://codeinindia.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-[#42B8FF] transition-colors underline decoration-gray-700 hover:decoration-[#42B8FF] underline-offset-2"
+              >
+                CodeinIndia.com
+              </a>
+            </p>
+          </div>
+          <div className="flex items-center justify-center sm:justify-end">
+            <span className="font-mono text-[11px] tracking-wider text-slate-500">
+              STRATEGY • TRANSFORMATION • PEOPLE • IMPACT
+            </span>
+          </div>
         </div>
       </div>
     </footer>

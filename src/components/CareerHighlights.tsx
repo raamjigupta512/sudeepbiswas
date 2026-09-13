@@ -1,5 +1,6 @@
 import React from 'react';
 import { Users, TrendingUp, HeartHandshake, ShieldCheck, Zap, Percent, Clock } from 'lucide-react';
+import { CareerGrowthChart } from './CareerGrowthChart';
 
 export const CareerHighlights: React.FC = () => {
   return (
@@ -165,6 +166,9 @@ export const CareerHighlights: React.FC = () => {
           </div>
 
         </div>
+
+        {/* Recharts Quantitative Growth Visualization */}
+        <CareerGrowthChart />
 
       </div>
     </section>

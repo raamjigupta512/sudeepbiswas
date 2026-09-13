@@ -335,12 +335,80 @@ export const TRANSFORMATION_TOOLKIT: ExpertiseCategory[] = [
   }
 ];
 
-export const GLOBAL_LOCATIONS = [
-  { name: "Bengaluru, India", role: "Current Leadership Hub (ITC Infotech, Maersk, Mindtree, Infosys)", x: 69.5, y: 54 },
-  { name: "Mumbai, India", role: "Academic Pedigree (SPJIMR, VJTI) & Siemens Foundations", x: 67.8, y: 51 },
-  { name: "Toronto / Montreal, Canada", role: "HCL Technologies Enterprise Delivery & JD Edwards Practice", x: 28, y: 31 },
-  { name: "Copenhagen, Denmark", role: "A.P. Moller – Maersk HQ Strategic Program Coordination", x: 52, y: 26 },
-  { name: "North America & Europe", role: "Global Enterprise Client Rollouts & Multi-Continent Delivery", x: 45, y: 35 }
+export interface GlobalLocationData {
+  name: string;
+  regionCode: string;
+  role: string;
+  projectCount: number;
+  consultantsScale: string;
+  keyIndustries: string[];
+  enterprises: string[];
+  keyAchievement: string;
+  x: number;
+  y: number;
+}
+
+export const GLOBAL_LOCATIONS: GlobalLocationData[] = [
+  {
+    name: "Bengaluru, India",
+    regionCode: "APAC-IN-S",
+    role: "Global Executive Leadership Hub (ITC Infotech, Maersk, Mindtree, Infosys)",
+    projectCount: 52,
+    consultantsScale: "1,300+ Consultants",
+    keyIndustries: ["CPG & FMCG", "Shipping & Global Freight", "Media & Entertainment", "Automotive"],
+    enterprises: ["ITC Infotech", "A.P. Moller – Maersk", "Mindtree", "Infosys"],
+    keyAchievement: "Scaled Mindtree enterprise SAP practice to 1,300+ consultants and co-steered Maersk O2C S/4HANA engineering.",
+    x: 69.5,
+    y: 54
+  },
+  {
+    name: "Mumbai, India",
+    regionCode: "APAC-IN-W",
+    role: "Industrial Foundation & Executive Pedigree (Siemens, Asian Paints, SPJIMR, VJTI)",
+    projectCount: 18,
+    consultantsScale: "75+ Direct Engineers",
+    keyIndustries: ["Industrial Equipment", "Petrochemicals", "Consumer Durables", "Chemicals"],
+    enterprises: ["Siemens Limited", "Asian Paints", "VJTI", "SPJIMR"],
+    keyAchievement: "Engineered factory automation diagnostics and regional dealer logistics distribution networks.",
+    x: 67.8,
+    y: 51
+  },
+  {
+    name: "Toronto / Montreal, Canada",
+    regionCode: "NA-CA",
+    role: "HCL Technologies Enterprise Delivery & JD Edwards Specialized Practice",
+    projectCount: 24,
+    consultantsScale: "~150 ERP Specialists",
+    keyIndustries: ["Discrete Manufacturing", "Supply Chain & Distribution", "Natural Resources", "Wholesale"],
+    enterprises: ["HCL Technologies", "Canadian Enterprise Clients", "Cross-Border Distributors"],
+    keyAchievement: "Scaled dedicated North American JD Edwards practice to ~150 consultants with zero-downtime go-lives.",
+    x: 28,
+    y: 31
+  },
+  {
+    name: "Copenhagen & Western Europe",
+    regionCode: "EU-DK",
+    role: "A.P. Moller – Maersk HQ Strategic Program Coordination & Pan-European Engagements",
+    projectCount: 16,
+    consultantsScale: "Cross-Continental Pods",
+    keyIndustries: ["Ocean & Inland Logistics", "Global Freight Forwarding", "Supply Chain Finance"],
+    enterprises: ["A.P. Moller – Maersk", "European Supply Chain Alliances"],
+    keyAchievement: "Architected Greenfield S/4HANA Order-to-Cash financial core connecting logistics across 130+ nations.",
+    x: 52,
+    y: 26
+  },
+  {
+    name: "United States (East & West)",
+    regionCode: "NA-US",
+    role: "Tier-1 Fortune 500 Enterprise Transformations & Strategic Portfolio P&L",
+    projectCount: 20,
+    consultantsScale: "Multi-Million Portfolio",
+    keyIndustries: ["CPG / Retail", "Banking & Financial Services", "Aerospace & High-Tech"],
+    enterprises: ["Global CPG Giants", "North American Financial Leaders", "Tier-1 Industrial Accounts"],
+    keyAchievement: "Maintained >97% delivery SLA adherence and high pre-sales conversion across Fortune 500 programs.",
+    x: 24,
+    y: 36
+  }
 ];
 
 export const GLOBAL_INDUSTRIES = [

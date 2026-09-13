@@ -1,5 +1,6 @@
 import React from 'react';
 import { Compass, Database, Users, Code2, ArrowRight } from 'lucide-react';
+import { motion, type Variants } from 'motion/react';
 
 export const TransformationToolkit: React.FC = () => {
   const toolkitColumns = [
@@ -53,6 +54,31 @@ export const TransformationToolkit: React.FC = () => {
     },
   ];
 
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 32,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
     <section
       id="toolkit"
@@ -73,15 +99,23 @@ export const TransformationToolkit: React.FC = () => {
           </p>
         </div>
 
-        {/* Four Distinct Editorial Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Four Distinct Editorial Columns with Staggered Framer Motion Entrance */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {toolkitColumns.map((col) => {
             const IconComponent = col.icon;
             return (
-              <div
+              <motion.div
                 key={col.title}
                 id={`toolkit-cat-${col.title.toLowerCase()}`}
-                className="bg-[#0B2239] border border-slate-800 hover:border-slate-700 p-8 rounded flex flex-col justify-between group transition-all duration-200 hover:-translate-y-1"
+                variants={cardVariants}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="bg-[#0B2239] border border-slate-800 hover:border-slate-700 p-8 rounded flex flex-col justify-between group shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5 pb-4 border-b border-slate-800">
@@ -116,10 +150,10 @@ export const TransformationToolkit: React.FC = () => {
                   <span>Executive Mastery</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#42B8FF] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

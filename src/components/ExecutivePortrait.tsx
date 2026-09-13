@@ -173,10 +173,40 @@ export const ExecutivePortrait: React.FC<ExecutivePortraitProps> = ({
 
   // Check if image is already cached/complete on mount or when source changes
   useEffect(() => {
+    // If the image element is already loaded by browser
     if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
       processLoadedImage(imgRef.current);
+      return;
     }
-  }, [portraitSrc, processLoadedImage]);
+
+    // Pre-warm through background Image constructor to ensure swift cached transition
+    let isMounted = true;
+    const preloader = new Image();
+    preloader.src = portraitSrc;
+
+    if (preloader.complete && preloader.naturalWidth > 0) {
+      if (isMounted) {
+        setIsLoaded(true);
+        onLoadedChange?.(true);
+      }
+    } else {
+      preloader.onload = () => {
+        if (isMounted) {
+          setIsLoaded(true);
+          onLoadedChange?.(true);
+        }
+      };
+      preloader.onerror = () => {
+        if (isMounted) {
+          handleError();
+        }
+      };
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [portraitSrc, processLoadedImage, onLoadedChange]);
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     processLoadedImage(e.currentTarget);
@@ -254,28 +284,28 @@ export const ExecutivePortrait: React.FC<ExecutivePortraitProps> = ({
 
       {/* ================= ATMOSPHERIC SKELETON LOADER (ZERO WHITE BOX) ================= */}
       <div
-        className={`absolute inset-0 z-10 overflow-hidden bg-[#071A2D] transition-opacity duration-700 ease-out aspect-square ${
-          isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        className={`absolute inset-0 z-20 overflow-hidden bg-[#071A2D] transition-all duration-1000 ease-out aspect-square ${
+          isLoaded ? 'opacity-0 pointer-events-none scale-[0.99]' : 'opacity-100 scale-100'
         }`}
         style={{ aspectRatio: '1 / 1' }}
         aria-hidden={isLoaded}
       >
         {/* Soft Radial Ambient Glow */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-70"
+          className="absolute inset-0 pointer-events-none opacity-80"
           style={{
             background:
-              'radial-gradient(circle at 50% 36%, rgba(66, 184, 255, 0.16) 0%, rgba(22, 119, 210, 0.08) 45%, transparent 75%)',
+              'radial-gradient(circle at 50% 36%, rgba(66, 184, 255, 0.18) 0%, rgba(22, 119, 210, 0.09) 45%, transparent 75%)',
           }}
         />
 
         {/* Diagonal Light Shimmer Sweep */}
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
           <div
-            className="w-[200%] h-full anim-shimmer pointer-events-none opacity-50"
+            className="w-[200%] h-full anim-shimmer pointer-events-none opacity-60"
             style={{
               background:
-                'linear-gradient(90deg, transparent 0%, rgba(66, 184, 255, 0.04) 30%, rgba(255, 255, 255, 0.08) 50%, rgba(66, 184, 255, 0.04) 70%, transparent 100%)',
+                'linear-gradient(90deg, transparent 0%, rgba(66, 184, 255, 0.05) 30%, rgba(255, 255, 255, 0.12) 50%, rgba(66, 184, 255, 0.05) 70%, transparent 100%)',
             }}
           />
         </div>
@@ -283,10 +313,18 @@ export const ExecutivePortrait: React.FC<ExecutivePortraitProps> = ({
         {/* Stylized Executive Silhouette Contour */}
         <div className="relative w-full h-full flex flex-col items-center justify-center p-6 sm:p-8">
           <div className="relative flex flex-col items-center mb-4">
+            {/* Head contour */}
             <div className="w-24 h-30 sm:w-28 sm:h-34 rounded-[50%/60%_60%_40%_40%] bg-gradient-to-b from-[#102C48]/90 to-[#0B2239]/90 border border-slate-700/60 shadow-inner flex items-center justify-center relative overflow-hidden">
-              <div className="absolute top-2 w-14 h-14 rounded-full bg-[#42B8FF]/10 blur-md" />
+              <div className="absolute top-2 w-14 h-14 rounded-full bg-[#42B8FF]/15 blur-md animate-pulse" />
+              {/* Subtle glasses silhouette hint */}
+              <div className="w-16 h-4 border-t border-slate-600/60 flex justify-between px-1 opacity-60 mt-1">
+                <div className="w-5 h-3.5 rounded-sm border border-slate-600/50" />
+                <div className="w-5 h-3.5 rounded-sm border border-slate-600/50" />
+              </div>
             </div>
+            {/* Neck contour */}
             <div className="w-10 h-5 bg-[#0E2740] -mt-1 z-0" />
+            {/* Shoulders and suit contour */}
             <div className="w-56 sm:w-64 h-24 sm:h-28 rounded-t-[100px] bg-gradient-to-b from-[#0F2A45] via-[#0B2239] to-transparent border-t border-slate-700/60 -mt-2 z-0 relative flex items-start justify-center pt-2">
               <div className="w-8 h-8 border-l border-r border-slate-600/40 transform rotate-12 opacity-50" />
             </div>
@@ -308,18 +346,18 @@ export const ExecutivePortrait: React.FC<ExecutivePortraitProps> = ({
 
       {/* ================= CINEMATIC PORTRAIT CONTAINER WITH SEAMLESS BLEND ================= */}
       <div
-        className="relative w-full h-full aspect-square overflow-hidden portrait-cinematic-blend"
+        className="relative z-10 w-full h-full aspect-square overflow-hidden portrait-cinematic-blend"
         style={{ aspectRatio: '1 / 1' }}
       >
-        {/* Real Sudeep Biswas Portrait Image */}
+        {/* Real Sudeep Biswas Portrait Image with Smooth Progressive Fade-in */}
         <img
           ref={imgRef}
           src={portraitSrc}
           alt={altText}
           width={350}
           height={350}
-          className={`w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-[1.012] ${
-            isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-[1.02] blur-[1px]'
+          className={`w-full h-full object-cover object-top transition-all duration-1000 ease-out group-hover:scale-[1.012] ${
+            isLoaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-[1.03] blur-[2px]'
           }`}
           loading="eager"
           fetchPriority="high"
